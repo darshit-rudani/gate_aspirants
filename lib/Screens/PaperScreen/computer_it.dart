@@ -2,20 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gate_aspirants/Papers/computet_it/2019.dart';
 import 'package:gate_aspirants/Screens/Favorites/favorites.dart';
-import 'package:gate_aspirants/Screens/PaperScreen/computer_it.dart';
 import 'package:gate_aspirants/constants.dart';
-import '../main_drawer.dart';
-import 'constants.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class HomePageUser extends StatefulWidget {
+import '../../main_drawer.dart';
+
+class ComputerIt extends StatefulWidget {
   static const routeName = 'User';
 
   @override
-  _HomePageUserState createState() => _HomePageUserState();
+  _ComputerItState createState() => _ComputerItState();
 }
 
-class _HomePageUserState extends State<HomePageUser> {
+class _ComputerItState extends State<ComputerIt> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User user;
   bool isLogin = false;
@@ -85,9 +84,6 @@ class _HomePageUserState extends State<HomePageUser> {
                 )
               : Column(
                   children: [
-                    Container(
-                      child: Text("Hello ${user.displayName}"),
-                    ),
                     Card(
                       elevation: 8.0,
                       child: Container(
@@ -100,7 +96,7 @@ class _HomePageUserState extends State<HomePageUser> {
                             backgroundColor: kPrimaryColor,
                             radius: 60.0,
                             child: Text(
-                              'CE',
+                              '2019',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -126,7 +122,7 @@ class _HomePageUserState extends State<HomePageUser> {
                               return Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ComputerIt(),
+                                  builder: (context) => CeIt2019(),
                                 ),
                               );
                             },
@@ -338,7 +334,7 @@ class _HomePageUserState extends State<HomePageUser> {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomePageUser(),
+                  builder: (context) => ComputerIt(),
                 ),
               ),
             ),

@@ -2,11 +2,13 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gate_aspirants/Screens/Login/components/Login.dart';
 import 'package:gate_aspirants/Screens/Login/components/background.dart';
 import 'package:gate_aspirants/components/rounded_button.dart';
 import 'package:gate_aspirants/components/text_field_container.dart';
 import '../../constants.dart';
+import '../../main_drawer.dart';
 
 class ForgotPassword extends StatefulWidget {
   @override
@@ -22,55 +24,26 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   void resetPassword(BuildContext context) async {
     await FirebaseAuth.instance
         .sendPasswordResetEmail(email: emailController.text);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Login(),
-      ),
+    Fluttertoast.showToast(
+      msg: "Password reset link send to your email account",
+      backgroundColor: kPrimaryLightColor,
+      // fontSize: 25
+      // gravity: ToastGravity.TOP,
+      textColor: Colors.black,
     );
   }
 
-  successFull() {
-    if (_formKey.currentState.validate()) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: Text("Complete"),
-          content: Text(
-            "Reset password link has sent to $_email. Please use it to change the password.",
-          ),
-          actions: <Widget>[
-            FlatButton(
-              onPressed: () => resetPassword(context),
-              child: Text("okay"),
-            ),
-          ],
-        ),
-      );
-    } else {
-      showDialog(
-        builder: (ctx) => AlertDialog(
-          title: Text("Error !!"),
-          content: Text("Please enter correct email"),
-          actions: <Widget>[
-            FlatButton(
-              onPressed: () {
-                Navigator.of(ctx).pop();
-              },
-              child: Text("okay"),
-            ),
-          ],
-        ),
-        context: null,
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimaryColor,
+        title: Text('Forgot Password'),
+      ),
+      drawer: MainDrawer(),
       body: Background(
         child: SingleChildScrollView(
           child: Form(
@@ -112,7 +85,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 SizedBox(height: 10),
                 RoundedButton(
                   text: "Reset Password",
-                  press: successFull,
+                  press: ()=>resetPassword(context),
                 ),
                 TextButton(
                   onPressed: () {

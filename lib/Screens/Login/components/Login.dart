@@ -171,12 +171,6 @@ class _LoginState extends State<Login> {
                 ),
                 TextFieldContainer(
                   child: TextFormField(
-                    validator: (input) {
-                      if (input.length < 6) {
-                        return 'Provide Minimum 6 Character';
-                      }
-                      return null;
-                    },
                     controller: pass,
                     decoration: InputDecoration(
                       icon: Icon(

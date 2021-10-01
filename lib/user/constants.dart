@@ -1,50 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gate_aspirants/constants.dart';
 
-final makeBody = Container(
-  child: ListView.builder(
-    scrollDirection: Axis.vertical,
-    shrinkWrap: true,
-    itemCount: 1,
-    itemBuilder: (BuildContext context, int index) {
-      return makeCard;
-    },
-  ),
-);
-
-final makeCard = Card(
-  elevation: 8.0,
-  margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-  child: Container(
-    decoration: BoxDecoration(
-        color: Colors.white, borderRadius: BorderRadius.circular(5)),
-    child: makeListTile,
-  ),
-);
-
-final makeListTile = ListTile(
-  leading: CircleAvatar(
-    backgroundColor: kPrimaryColor,
-    radius: 60.0,
-    child: Text(
-      'CE',
-      style: TextStyle(fontWeight: FontWeight.bold),
-    ),
-  ),
-  contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-  title: Text(
-    "Gate-Computer Sci",
-    style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-  ),
-  // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-  trailing: Icon(
-    Icons.keyboard_arrow_right,
-    color: Colors.black,
-    size: 30.0,
-  ),
-);
-
 final makeBody1 = Container(
   child: ListView.builder(
     scrollDirection: Axis.vertical,
